@@ -7,7 +7,9 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   template: `
-    <router-outlet></router-outlet>
+    <div data-theme="corporate">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styles: [],
 })
