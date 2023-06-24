@@ -47,6 +47,4 @@ import { CommonModule } from '@angular/common';
   styles: [
   ]
 })
-export class Test1Component {
-
-}
+export class ExpensesFeature {}
