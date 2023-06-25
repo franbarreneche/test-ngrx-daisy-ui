@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Expense } from '../types/expense';
+import { Store } from '@ngrx/store';
+import { expenseActions } from '../store/expenses/expenses.actions';
 
 @Component({
   selector: 'app-expenses-table',
@@ -15,7 +18,7 @@ import { CommonModule } from '@angular/common';
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Detail</th>
+                <th>description</th>
                 <th>Amount</th>
                 <th>Actions</th>
               </tr>
@@ -23,9 +26,11 @@ import { CommonModule } from '@angular/common';
             <tbody>
               <tr *ngFor="let expense of expenses" class="hover:bg-gray-100">
                 <th>{{ expense.date | date}}</th>
-                <td>{{ expense.detail  }}</td>
+                <td>{{ expense.description  }}</td>
                 <td>{{ expense.price | currency:'USD':true }}</td>
-                <td><button class="btn btn-secondary btn-xs">delete</button></td>
+                <td>
+                  <button class="btn btn-secondary btn-xs" (click)="onDelete(expense.id)">delete</button>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -36,27 +41,38 @@ import { CommonModule } from '@angular/common';
   `,
 })
 export class ExpensesTableComponent {
-  expenses = [
+  expenses: Expense[] = [
     {
+      id: "asdf1",
       date: '2023-06-21',
-      detail: 'Panaderia',
+      description: 'Panaderia',
       price: 450,
     },
     {
+      id: "asdf2",
       date: '2023-06-22',
-      detail: 'Verdulería',
+      description: 'Verdulería',
       price: 1450,
-    },{
+    },
+    {
+      id: "asdf3",
       date: '2023-06-23',
-      detail: 'Supermercado',
+      description: 'Supermercado',
       price: 3274,
     },
     {
+      id: "asdf4",
       date: '2023-06-24',
-      detail: 'Paddel',
+      description: 'Paddel',
       price: 950,
     }
 
   ];
+
+  constructor(private readonly store: Store) { }
+
+  onDelete(id: string) {
+    this.store.dispatch(expenseActions.deleteExpense({ id }));
+  }
 
 }
