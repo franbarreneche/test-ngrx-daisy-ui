@@ -4,11 +4,12 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { expenseReducers } from './store/expenses/expenses.reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideStore(),
+    provideStore({ expenses: expenseReducers }),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: false, // Restrict extension to log-only mode
