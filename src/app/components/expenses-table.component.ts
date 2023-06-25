@@ -27,7 +27,7 @@ import { selectExpenses } from '../store/expenses/expenses.selectors';
               <tr *ngFor="let expense of expenses | async" class="hover:bg-gray-100">
                 <th>{{ expense.date | date}}</th>
                 <td>{{ expense.description  }}</td>
-                <td>{{ expense.price | currency:'USD':true }}</td>
+                <td>{{ expense.price | currency:'USD':'symbol-narrow' }}</td>
                 <td>
                   <button class="btn btn-secondary btn-xs" (click)="onDelete(expense.id)">delete</button>
                 </td>
