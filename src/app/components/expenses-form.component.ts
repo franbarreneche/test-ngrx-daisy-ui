@@ -6,15 +6,32 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="card w-96 bg-neutral text-neutral-content">
+    <div class="card bg-white text-white-content self-center shadow">
       <div class="card-body items-center text-center">
-        <h2 class="card-title">Cookies!</h2>
-        <p>We are using cookies for no reason.</p>
-        <div class="card-actions justify-end">
-          <button class="btn btn-primary">Accept</button>
-          <button class="btn btn-ghost">Deny</button>
+        <h2 class="card-title">Add New Expense</h2>
+          <!-- Date -->
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Date</span>
+          </label>
+          <input type="date" placeholder="Supermarket" class="input input-bordered w-full max-w-xs" />
         </div>
-      </div>
+        <!-- Detail -->
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Detail</span>
+          </label>
+          <input type="text" placeholder="Ex: Supermarket" class="input input-bordered w-full max-w-xs" />
+        </div>
+        <!-- Price -->
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">Price</span>
+          </label>
+          <input type="number" placeholder="Ex: 150" class="input input-bordered w-full max-w-xs" />
+        </div>
+        <!-- Add -->
+        <button class="btn btn-block btn-neutral">Add</button>
     </div>
   `,
 })
