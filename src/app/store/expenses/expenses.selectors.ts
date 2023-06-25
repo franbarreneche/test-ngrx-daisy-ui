@@ -27,7 +27,7 @@ export const selectMedianExpenses: MemoizedSelector<AppState, number> = createSe
   selectExpenses,
   (expenses) => {
     if(expenses.length === 0) return 0;
-    const sorted = expenses.sort((a, b) => a.price > b.price ? 1 : (a.price === b.price) ? 0 : -1);
+    const sorted = [...expenses].sort((a, b) => a.price > b.price ? 1 : (a.price === b.price) ? 0 : -1);
     const mean = sorted[Math.floor(sorted.length / 2)].price;
     return mean;
   }
