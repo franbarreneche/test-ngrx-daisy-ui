@@ -18,8 +18,8 @@ import { selectExpenses } from '../store/expenses/expenses.selectors';
             <thead>
               <tr>
                 <th>Date</th>
-                <th>description</th>
-                <th>Amount</th>
+                <th>Description</th>
+                <th>Price</th>
                 <th>Actions</th>
               </tr>
             </thead>
