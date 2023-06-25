@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Expense } from '../types/expense';
 import { Store } from '@ngrx/store';
 import { expenseActions } from '../store/expenses/expenses.actions';
+import { selectExpenses } from '../store/expenses/expenses.selectors';
 
 @Component({
   selector: 'app-expenses-table',
@@ -24,7 +24,7 @@ import { expenseActions } from '../store/expenses/expenses.actions';
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let expense of expenses" class="hover:bg-gray-100">
+              <tr *ngFor="let expense of expenses | async" class="hover:bg-gray-100">
                 <th>{{ expense.date | date}}</th>
                 <td>{{ expense.description  }}</td>
                 <td>{{ expense.price | currency:'USD':true }}</td>
@@ -41,33 +41,7 @@ import { expenseActions } from '../store/expenses/expenses.actions';
   `,
 })
 export class ExpensesTableComponent {
-  expenses: Expense[] = [
-    {
-      id: "asdf1",
-      date: '2023-06-21',
-      description: 'Panaderia',
-      price: 450,
-    },
-    {
-      id: "asdf2",
-      date: '2023-06-22',
-      description: 'Verdulería',
-      price: 1450,
-    },
-    {
-      id: "asdf3",
-      date: '2023-06-23',
-      description: 'Supermercado',
-      price: 3274,
-    },
-    {
-      id: "asdf4",
-      date: '2023-06-24',
-      description: 'Paddel',
-      price: 950,
-    }
-
-  ];
+  protected expenses = this.store.select(selectExpenses);
 
   constructor(private readonly store: Store) { }
 
