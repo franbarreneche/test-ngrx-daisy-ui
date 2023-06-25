@@ -25,7 +25,7 @@ import { CommonModule } from '@angular/common';
                 <th>{{ expense.date | date}}</th>
                 <td>{{ expense.detail  }}</td>
                 <td>{{ expense.price | currency:'USD':true }}</td>
-                <td><button class="btn btn-neutral btn-xs">delete</button></td>
+                <td><button class="btn btn-secondary btn-xs">delete</button></td>
               </tr>
             </tbody>
           </table>
